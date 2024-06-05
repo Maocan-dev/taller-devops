@@ -7,18 +7,15 @@ on:
         branches: [ "master" ]
 
 jobs:
-
     build:
         runs-on: ubuntu-latest
-
-           steps:
-            name: Login docker github registry
+        steps:
+            - name: Login docker github registry
             uses: docker/login-action@v3.2.0
             with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.DK_TOKEN }}
-        uses: actions/checkout@v4
-        name: Build the Docker image
-        run: docker build --tag ghcr.io/jaxmetalmax/simple-web-page:latest -t ghcr.io/jaxmetalmax/simple-web-page:$(echo $GITHUB_SHA | cut -c 1-8) --push .
-            
+                registry: ghcr.io
+                username: ${{ github.actor }}
+                password: ${{ secrets.DK_TOKEN }}
+            uses: actions/checkout@v4
+            name: Build the Docker image
+            run: docker build --tag ghcr.io/jaxmetalmax/simple-web-page:latest -t ghcr.io/jaxmetalmax/simple-web-page:$(echo $GITHUB_SHA | cut -c 1-8) --push .
