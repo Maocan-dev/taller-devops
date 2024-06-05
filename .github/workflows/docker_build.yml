@@ -18,4 +18,4 @@ jobs:
                 password: ${{ secrets.DK_TOKEN }}
             uses: actions/checkout@v4
             name: Build the Docker image
-            run: docker build --tag ghcr.io/jaxmetalmax/simple-web-page:latest -t ghcr.io/jaxmetalmax/simple-web-page:$(echo $GITHUB_SHA | cut -c 1-8) --push .
+            run: docker build --tag ghcr.io/Maocan-dev/taller-devops:latest -t ghcr.io/Maocan-dev/taller-devops:$(echo $GITHUB_SHA | cut -c 1-8) --push .
